@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">2App</string>
+    <string name="textview1">Ilość</string>
+    <string name="textview2">0</string>
+    <string name="button1">Zamów</string>
+    <string name="textview3">Cena</string>
+    <string name="textview4">0zl</string>
+    <string name="button2">+</string>
+    <string name="button3">-</string>
+</resources>
