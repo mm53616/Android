@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
      */
     public void submitOrder(View view) {
 
-
         int price = calculatePrice();
         String priceMessage = createOrderSummary(price);
         displayMessage(priceMessage);
