@@ -1,11 +1,14 @@
 package com.example.mmant.a2app;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -29,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method is called when the order button is clicked.
      */
-    public void submitOrder(View view) {
+    public String submitOrder(View view) {
+
 
         EditText nameOfUser = findViewById(R.id.typedName);
         Editable userName = nameOfUser.getText();
@@ -41,16 +45,49 @@ public class MainActivity extends AppCompatActivity {
         int price = calculatePrice(hasAddition1, hasAddition2);
         String priceMessage = createOrderSummary(price, hasAddition1, hasAddition2, userName);
         displayMessage(priceMessage);
+        return priceMessage;
 
     }
+
+
+
+    /**
+  * This method is called when we wnnt to send an email
+  */
+
+    public void sendOrder(View view) {
+
+        String mailText = submitOrder(view);
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Zamówienie");
+        intent.putExtra(Intent.EXTRA_TEXT, mailText);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+
+    }
+
 
     /**
      * This method is called when the plus button is clicked.
      */
     public String createOrderSummary(int payment, boolean hasAddition1, boolean hasAddition2, Editable userName) {
 
-        String message = "Imię: " + userName + "\nIlość: " + quantity + "\nDodatki:" + "\nbita śmietana  "
-                + hasAddition1 + "\nczekolada " + hasAddition2 +"\nSuma: " + payment + "\nDziękuję!";
+        String hasAdd1;
+        if (hasAddition1)
+            hasAdd1 = "TAK";
+        else
+            hasAdd1 = "NIE";
+
+        String hasAdd2;
+        if (hasAddition2)
+            hasAdd2 = "TAK";
+        else
+            hasAdd2 = "NIE";
+
+        String message = "Imię: " + userName + "\nIlość: " + quantity + "\nDodatki:" + "\nBita śmietana:  "
+                + hasAdd1 + "\nCzekolada: " + hasAdd2 +"\nSuma: " + payment + " zł" + "\nDziękuję!";
         return message;
     }
 
@@ -66,6 +103,20 @@ public class MainActivity extends AppCompatActivity {
         }
         else
             Toast.makeText(MainActivity.this, "Nie możesz zamówić więcej kaw!", Toast.LENGTH_LONG).show();
+    }
+
+    /**
+     * This method is called when the MAP button is clicked.
+     */
+    public void showMap(View view) {
+
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("geo:52.13, 21"));
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+
+
     }
 
     /**
@@ -118,8 +169,9 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method displays the given text on the screen.
      */
-    private void displayMessage(String message) {
+        private void displayMessage(String message) {
         TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
         orderSummaryTextView.setText(message);
     }
-}
+
+  }
