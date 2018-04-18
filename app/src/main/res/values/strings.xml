@@ -7,4 +7,6 @@
     <string name="textview4">0zl</string>
     <string name="button2">+</string>
     <string name="button3">-</string>
+    <string name="textview">Dodatki</string>
+    <string name="checkbox">Bita śmietana</string>
 </resources>
