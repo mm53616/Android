@@ -1,12 +1,15 @@
 <resources>
     <string name="app_name">2App</string>
     <string name="textview1">Ilość</string>
-    <string name="textview2">0</string>
+    <string name="textview2">1</string>
     <string name="button1">Zamów</string>
     <string name="textview3">Podsumowanie zamówienia</string>
     <string name="textview4">0zl</string>
     <string name="button2">+</string>
     <string name="button3">-</string>
     <string name="textview">Dodatki</string>
-    <string name="checkbox">Bita śmietana</string>
+    <string name="checkbox1">Bita śmietana</string>
+    <string name="checkbox2">Czekolada</string>
+    <string name="enter_text">Imię</string>
+    <string name="entered_text">Imię</string>
 </resources>
