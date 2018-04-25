@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
      */
     public String submitOrder(View view) {
 
-
         EditText nameOfUser = findViewById(R.id.typedName);
         Editable userName = nameOfUser.getText();
         CheckBox checkbox1 = findViewById(R.id.addition1);

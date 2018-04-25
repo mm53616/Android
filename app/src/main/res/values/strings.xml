@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">2App</string>
+    <string name="app_name">Coffee2Go</string>
     <string name="textview1">Ilość</string>
     <string name="textview2">1</string>
     <string name="button1">Wyświetl podsumowanie zamówieneia</string>
